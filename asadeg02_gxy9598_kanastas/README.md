@@ -4,9 +4,9 @@ The Main project we are assigned is a spark project named "South Boston Neighbor
 
 The two quesotions to be answred are the following:
 
-1- Finding information about the buildings/properties in the most dangereous neighborhood of Boston area. These infomation include the value of these porpeties, type of the crimes happening in the neighbourhood, perimit number of buildings, owners of the porpeties,...
+1- Finding information about the buildings/properties in the most dangereous neighborhood of Boston area. These infomation include the value of these porpeties, type of the crimes happening in the neighbourhood, permit number of buildings, owners of the properties,...
 
-2- Clustering food stablishments in Boston area using their location and then finding infomation about properties in the most compact cluster (with the most food stablishments in it) to see if access to food stablishments has any impact in the population living in that area or on the value of properties.
+2- Clustering food establishments in Boston area using their location and then finding infomation about properties in the most compact cluster (with the most food establishments in it) to see if access to food establishments has any impact on the population living in that area or on the value of properties.
 
 ---
 Data Sets
@@ -16,7 +16,7 @@ Permit Database : https://data.boston.gov/api/3/action/datastore_search?resource
 
 Crime Incident Database : https://data.boston.gov/api/3/action/datastore_search?resource_id=12cb3883-56f5-47de-afa5-3b1cf61b257b&limit=366640
 
-Active Food Stablishments: https://data.boston.gov/api/3/action/datastore_search?resource_id=f1e13724-284d-478c-b8bc-ef042aa5b70b&limit=3010
+Active Food Establishments: https://data.boston.gov/api/3/action/datastore_search?resource_id=f1e13724-284d-478c-b8bc-ef042aa5b70b&limit=3010
 
 Street Names: https://data.boston.gov/api/3/action/datastore_search?resource_id=a07cc1c6-aa78-4eb3-a005-dcf7a949249f&limit=18992
 
@@ -26,13 +26,13 @@ Aditional Resources
 
 Zillow Search API: "https://www.zillow.com/howto/api/GetSearchResults.htm"
 
-We are using these API to create a database of the property addresses that are on the market which we are not using for project#1 but is requiered for the main South Boston Neighborhood Development project. 
+We are using this API to create a database of the property addresses that are on the market which we are not using for project#1 but is required for the main South Boston Neighborhood Development project. 
 
-Accsesssors (Accessing online - City Of Boston): https://www.cityofboston.gov/assessing/search/ 
+Accesssors (Accessing online - City Of Boston): https://www.cityofboston.gov/assessing/search/ 
 
-We are scraping this wesite to find the infomation we are intested in about the propeties in City Of Boston including the value of propeties. This resource is useful for both project#1 and Main project.
+We are scraping this website to find the information we are interested in about the propeties in City Of Boston including the value of propeties. This resource is useful for both project#1 and Main project.
 
-**Please note that scraping a website or calling an API is such a slow process and scraping accessors for all the street addresses is boyond the time and resources available so we have put a limit on the number of addresses we want to scrape accsessors for or call the api for**
+**Please note that scraping a website or calling an API is such a slow process and scraping accessors for all the street addresses is beyond the time and resources available so we have put a limit on the number of addresses we want to scrape accessors for or call the api for**
 
 ## Overview Of Transformations 
 
