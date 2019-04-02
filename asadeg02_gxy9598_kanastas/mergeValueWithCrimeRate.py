@@ -106,7 +106,7 @@ class mergeValueWithCrimeRate(dml.Algorithm):
             _id += 1
         repo['asadeg02_gxy9598.property_value_for_dangerous_neighbourhoods'].metadata({'complete':True})
         print(repo['asadeg02_gxy9598.property_value_for_dangerous_neighbourhoods'].metadata())
-        print('Load Propert Value For the most dangerous Neighbourhoods')
+        print('Load Property Value For the most dangerous Neighbourhoods')
         repo.logout()
         endTime = datetime.datetime.now()
         return {"Start ":startTime, "End ":endTime}

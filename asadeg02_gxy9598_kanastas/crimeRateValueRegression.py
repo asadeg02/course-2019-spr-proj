@@ -35,7 +35,7 @@ class crimeRateValueRegression(dml.Algorithm):
 
         result = regr.getRegressionResults(crime_rates, mean_values)
         
-        epo.dropCollection('asadeg02_gxy9598.crime_rate_mean_value_regression')
+        repo.dropCollection('asadeg02_gxy9598.crime_rate_mean_value_regression')
         repo.createCollection('asadeg02_gxy9598.crime_rate_mean_value_regression')       
         
         #result is already a dictionary we store the coefficients and scores in the collection
