@@ -57,7 +57,7 @@ class getMeanValueAndCrimeRate(dml.Algorithm):
         crime_rate_mean_value = []
         scrapper = scrapeAssessors()       
         
-        for street in dangerous_streets[:5]:
+        for street in dangerous_streets[:20]:
             street_value_crime_rate = {'street': street, 'crime_rate': street_crime_rate_dict[street]}            
             results = scrapper.scrapeAssessors([street])            
             if len(results) > 0:
@@ -67,7 +67,7 @@ class getMeanValueAndCrimeRate(dml.Algorithm):
                 street_value_crime_rate['value'] = mean_value/len(results)            
                 crime_rate_mean_value.append(street_value_crime_rate)
 
-        for street in safe_streets[:5]:
+        for street in safe_streets[:20]:
             street_value_crime_rate = {'street': street, 'crime_rate': 0}
             results = scrapper.scrapeAssessors([street])            
             if len(results) > 0:
@@ -76,9 +76,6 @@ class getMeanValueAndCrimeRate(dml.Algorithm):
                     mean_value += float(result['VALUE'].replace('$', '').replace(',',''))
                 street_value_crime_rate['value'] = mean_value/len(results)
                 crime_rate_mean_value.append(street_value_crime_rate)
-
-
-        print(crime_rate_mean_value) 
 
         repo.dropCollection('asadeg02_gxy9598.crime_rate_mean_value')
         repo.createCollection('asadeg02_gxy9598.crime_rate_mean_value')     
