@@ -34,7 +34,16 @@ class crimeRateValueRegression(dml.Algorithm):
         regr = regression()
 
         result = regr.getRegressionResults(crime_rates, mean_values)
-                
+        
+        epo.dropCollection('asadeg02_gxy9598.crime_rate_mean_value_regression')
+        repo.createCollection('asadeg02_gxy9598.crime_rate_mean_value_regression')       
+        
+        #result is already a dictionary we store the coefficients and scores in the collection
+        repo['asadeg02_gxy9598.crime_rate_mean_value_regression'].insert(result)
+           
+        repo['asadeg02_gxy9598.crime_rate_mean_value_regression'].metadata({'complete':True})
+        print(repo['asadeg02_gxy9598.crime_rate_mean_value_regression'].metadata())
+        print('Load Regression Results For Modeling The Relationship Between Crime Rate And Mean Property Value')        
         endTime = datetime.datetime.now()
         return {"Start ":startTime, "End ":endTime}
 
