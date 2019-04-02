@@ -33,7 +33,7 @@ class foodStablishmentClusters(dml.Algorithm):
         # Get locations data
         locations = []
         for doc in food_stablishments:
-            location = doc['location'].replace('(', '').replace(')', '').split(', ')
+            location = doc['Location'].replace('(', '').replace(')', '').split(', ')
             location = [float(location[0]), float(location[1])]            
             locations.append(location)
 
@@ -55,20 +55,21 @@ class foodStablishmentClusters(dml.Algorithm):
         # Find buildings in each cluster 
         clusters_buildings = {}  
         for doc in building_permits:            
-            location = doc['Location'].replace('(', '').replace(')', '').split(', ')
-            if len(location) == 2:
-                location = [float(location[0]), float(location[1])]
-                min = float("inf")
-                closest_center = None
-                for i in range(0, len(kmeans_centers)):
-                    dist = np.linalg.norm(np.array(kmeans_centers[i])-np.array(location))
-                    if dist <= min:
-                        min = dist
-                        closest_center = i
-                if closest_center in clusters_buildings:
-                    clusters_buildings[closest_center].append(doc)
-                else:
-                    clusters_buildings[closest_center] = [doc]
+            if doc['location'] != None:          
+                location = doc['location'].replace('(', '').replace(')', '').split(', ')
+                if len(location) == 2:
+                    location = [float(location[0]), float(location[1])]
+                    min = float("inf")
+                    closest_center = None
+                    for i in range(0, len(kmeans_centers)):
+                        dist = np.linalg.norm(np.array(kmeans_centers[i])-np.array(location))
+                        if dist <= min:
+                            min = dist
+                            closest_center = i
+                    if closest_center in clusters_buildings:
+                        clusters_buildings[closest_center].append(doc)
+                    else:
+                        clusters_buildings[closest_center] = [doc]
  
         # Get properties in the most populated food stablishment cluster 
         properties_in_most_populated_cluster = None

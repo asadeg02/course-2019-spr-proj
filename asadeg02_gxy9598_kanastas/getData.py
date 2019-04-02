@@ -12,7 +12,7 @@ class getData(dml.Algorithm):
     contributor = 'asadeg02_gxy9598'
     reads = []
     writes = ['asadeg02_gxy9598.building_permits', 'asadeg02_gxy9598.crime_incident_report', 
-              'asadeg02_gxy9598.active_food_stablishment', 'asadeg02_gxy9598.Get_Boston_Streets', 'asadeg02_gxy9598.Get_Zillow_Search']
+              'asadeg02_gxy9598.active_food_stablishment', 'asadeg02_gxy9598.Boston_street_segments', 'asadeg02_gxy9598.Get_Zillow_Search']
 
     @staticmethod
     def execute(trial = False):
@@ -105,12 +105,12 @@ class getData(dml.Algorithm):
             record_addrs.sort()
         
         s = json.dumps(r, sort_keys=True, indent=2)
-        repo.dropCollection("Get_Boston_Streets")
-        repo.createCollection("Get_Boston_Streets")
-        repo["asadeg02_gxy9598.Get_Boston_Streets"].insert_many(r)
-        repo["asadeg02_gxy9598.Get_Boston_Streets"].metadata({'complete':True})
-        print(repo["asadeg02_gxy9598.Get_Boston_Streets"].metadata())
-        print("Load GBoston Streets")
+        repo.dropCollection("Boston_street_segments")
+        repo.createCollection("Boston_street_segments")
+        repo["asadeg02_gxy9598.Boston_street_segments"].insert_many(r)
+        repo["asadeg02_gxy9598.Boston_street_segments"].metadata({'complete':True})
+        print(repo["asadeg02_gxy9598.Boston_street_segments"].metadata())
+        print("Load Boston Streets Segments")
 
        ################################################### get housing per Street #########################
         repo.dropCollection("Get_Zillow_Search")
@@ -194,14 +194,14 @@ class getData(dml.Algorithm):
         doc.wasDerivedFrom(active_food_stablishment, resource_active_food_stablishment, get_active_food_stablishment, get_active_food_stablishment, get_active_food_stablishment)
         
         
-        resource_Get_Boston_Streets = doc.entity('cob:a07cc1c6-aa78-4eb3-a005-dcf7a949249f', {'prov:label':'Boston Street Name', prov.model.PROV_TYPE:'ont:DataResource', 'ont:Extension':'json'})
-        get_Get_Boston_Streets = doc.activity('log:uuid'+str(uuid.uuid4()), startTime, endTime, {'prov:label':'Get_Boston_Streets', prov.model.PROV_TYPE:'ont:Retrieval'})
-        doc.wasAssociatedWith(get_Get_Boston_Streets, this_script)
-        doc.usage(get_Get_Boston_Streets, resource_Get_Boston_Streets, startTime)
-        Get_Boston_Streets = doc.entity('dat:asadeg02_gxy9598#Get_Boston_Streets', {prov.model.PROV_LABEL:'Boston Street Segments', prov.model.PROV_TYPE:'ont:DataSet'})
-        doc.wasAttributedTo(Get_Boston_Streets, this_script)
-        doc.wasGeneratedBy(Get_Boston_Streets, get_Get_Boston_Streets, endTime)
-        doc.wasDerivedFrom(Get_Boston_Streets, resource_Get_Boston_Streets, get_Get_Boston_Streets ,get_Get_Boston_Streets ,get_Get_Boston_Streets)
+        resource_Boston_street_segmentss = doc.entity('cob:a07cc1c6-aa78-4eb3-a005-dcf7a949249f', {'prov:label':'Boston Street Name', prov.model.PROV_TYPE:'ont:DataResource', 'ont:Extension':'json'})
+        get_Boston_street_segmentss = doc.activity('log:uuid'+str(uuid.uuid4()), startTime, endTime, {'prov:label':'Boston_street_segmentss', prov.model.PROV_TYPE:'ont:Retrieval'})
+        doc.wasAssociatedWith(get_Boston_street_segmentss, this_script)
+        doc.usage(get_Boston_street_segmentss, resource_Boston_street_segmentss, startTime)
+        Boston_street_segmentss = doc.entity('dat:asadeg02_gxy9598#Boston_street_segmentss', {prov.model.PROV_LABEL:'Boston Street Segments', prov.model.PROV_TYPE:'ont:DataSet'})
+        doc.wasAttributedTo(Boston_street_segmentss, this_script)
+        doc.wasGeneratedBy(Boston_street_segmentss, get_Boston_street_segmentss, endTime)
+        doc.wasDerivedFrom(Boston_street_segmentss, resource_Boston_street_segmentss, get_Boston_street_segmentss ,get_Boston_street_segmentss ,get_Boston_street_segmentss)
 
 
 
