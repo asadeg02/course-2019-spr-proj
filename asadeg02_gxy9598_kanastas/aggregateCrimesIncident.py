@@ -33,7 +33,7 @@ class aggregateCrimesIncident(dml.Algorithm):
         
         #count aggregation using address as keys
         mapper = Code("function () {"                   
-                   "   emit(this.street, 1);"
+                   "   emit(this.STREET, 1);"
                    "}")
 
         reducer = Code("function (key, values) {"
