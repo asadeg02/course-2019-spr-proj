@@ -5,14 +5,14 @@ import prov.model
 import datetime
 import uuid
 from bson.code import Code
-from .regression import regression
+from .helper.regression import regression as regr
 
 
 class crimeRateValueRegression(dml.Algorithm):
 
     contributor = 'asadeg02_gxy9598'
     reads = ['asadeg02_gxy9598.crime_rate_mean_value']
-    writes = ['asadeg02_gxy9598.crime_rate_mean_value_regression']
+    writes = ['asadeg02_gxy9598.regressions']
 
     
     @staticmethod
@@ -31,21 +31,21 @@ class crimeRateValueRegression(dml.Algorithm):
         crime_rate_mean_value =  repo.asadeg02_gxy9598.crime_rate_mean_value.find()
         mean_values = [doc['value'] for doc in crime_rate_mean_value]
         
-        regr = regression()
+        #regr = regression.regression()
 
         result = regr.getRegressionResults(crime_rates, mean_values)       
-        print(result)
+        result['_id'] = 'crime_rate_mean_value_regression'
 
         
-        repo.dropCollection('asadeg02_gxy9598.crime_rate_mean_value_regression')
-        repo.createCollection('asadeg02_gxy9598.crime_rate_mean_value_regression') 
+        repo.dropCollection('asadeg02_gxy9598.regressions')
+        repo.createCollection('asadeg02_gxy9598.regressions') 
         
         #result is already a dictionary we store the coefficients and scores in the collection
-        repo['asadeg02_gxy9598.crime_rate_mean_value_regression'].insert_one(result)
+        repo['asadeg02_gxy9598.regressions'].insert_one(result)
         
            
-        repo['asadeg02_gxy9598.crime_rate_mean_value_regression'].metadata({'complete':True})
-        print(repo['asadeg02_gxy9598.crime_rate_mean_value_regression'].metadata())
+        repo['asadeg02_gxy9598.regressions'].metadata({'complete':True})
+        print(repo['asadeg02_gxy9598.regressions'].metadata())
         print('Load Regression Results For Modeling The Relationship Between Crime Rate And Mean Property Value')        
         endTime = datetime.datetime.now()
         return {"Start ":startTime, "End ":endTime}
@@ -72,7 +72,7 @@ class crimeRateValueRegression(dml.Algorithm):
         resource_crime_rate_mean_value = doc.entity('dat:asadeg02_gxy9598#crime_rate_mean_value', {prov.model.PROV_LABEL:'Crime Rate And Mean Property Value Per Street', prov.model.PROV_TYPE:'ont:DataSet'})
         doc.usage(crime_rate_mean_value_regression, resource_crime_rate_mean_value, startTime)
 
-        crime_rate_mean_value_regression = doc.entity('dat:asadeg02_gxy9598#crime_rate_mean_value_regression', {'prov:label':'Coefficients And Score Of Linear Regression Of Crime Rate And Mean Property Value', prov.model.PROV_TYPE:'ont:Dataset'})
+        crime_rate_mean_value_regression = doc.entity('dat:asadeg02_gxy9598#regressions', {'prov:label':'Coefficients And Score Of Linear Regression Of Crime Rate And Mean Property Value', prov.model.PROV_TYPE:'ont:Dataset'})
         doc.wasAttributedTo(crime_rate_mean_value_regression, this_script)
         doc.wasGeneratedBy(crime_rate_mean_value_regression, crime_rate_mean_value_regression, endTime)
         doc.wasDerivedFrom(crime_rate_mean_value_regression, resource_crime_rate_mean_value, crime_rate_mean_value_regression, crime_rate_mean_value_regression, crime_rate_mean_value_regression)

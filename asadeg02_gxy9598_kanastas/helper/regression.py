@@ -12,11 +12,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-class regression(dml.Algorithm):
-    
-    contributor = 'asadeg02_gxy9598'
-    reads = []
-    writes = []    
+class regression():     
     
 
     @staticmethod
@@ -55,12 +51,5 @@ class regression(dml.Algorithm):
         plt.yticks(())
         plt.savefig('crime_rate_value_regr.pdf')
         
-        return results
-  
-    @staticmethod
-    def execute(trial = False):
-        print("null execute method")
-
-    @staticmethod
-    def provenance(doc = prov.model.ProvDocument(), startTime = None, endTime = None):
-        return doc
+        return results  
+    

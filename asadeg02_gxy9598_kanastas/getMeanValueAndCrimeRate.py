@@ -5,7 +5,7 @@ import prov.model
 import datetime
 import uuid
 import time
-from .scrapeAssessors import scrapeAssessors
+from .helper.scrapeAssessors import scrapeAssessors as scrapper
 
 
 class getMeanValueAndCrimeRate(dml.Algorithm):
@@ -55,7 +55,7 @@ class getMeanValueAndCrimeRate(dml.Algorithm):
             num_streets = 10
         '''
         crime_rate_mean_value = []
-        scrapper = scrapeAssessors()       
+        #scrapper = scrapeAssessors()       
         
         for street in dangerous_streets[:5]:
             street_value_crime_rate = {'street': street, 'crime_rate': street_crime_rate_dict[street]}            
