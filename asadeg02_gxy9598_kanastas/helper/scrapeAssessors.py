@@ -10,7 +10,7 @@ import selenium
 from selenium import webdriver
 
 
-class scrapeAssessors(dml.Algorithm):
+class scrapeAssessors():
     
     contributor = 'asadeg02_gxy9598'
     reads = []
@@ -56,12 +56,5 @@ class scrapeAssessors(dml.Algorithm):
         elapsed_time = time.time() - start_time
         print("Time elapsed: " + str(elapsed_time))
         print("Finished scraping Boston gov for details of properties")
-        return results
-  
-    @staticmethod
-    def execute(trial = False):
-        print("null execute method")
-
-    @staticmethod
-    def provenance(doc = prov.model.ProvDocument(), startTime = None, endTime = None):
-        return doc
+        return results 
+    
