@@ -38,7 +38,7 @@ class regression(dml.Algorithm):
         regr = linear_model.LinearRegression()
         regr.fit(x_train,y_train)
 
-        results = {'coefficients': regr.coef_, 
+        results = {'coefficients': regr.coef_[0][0], 
                    'mean_square_errors': np.mean((regr.predict(x_train) - y_train) ** 2),
                    'score': regr.score(x_train, y_train)}    
 
