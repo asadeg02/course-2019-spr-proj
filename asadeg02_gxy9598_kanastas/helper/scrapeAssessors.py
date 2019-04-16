@@ -10,11 +10,7 @@ import selenium
 from selenium import webdriver
 
 
-class scrapeAssessors():
-    
-    contributor = 'asadeg02_gxy9598'
-    reads = []
-    writes = []    
+class scrapeAssessors():       
   
 
     @staticmethod
