@@ -16,11 +16,9 @@ class regression():
     
 
     @staticmethod
-    def getRegressionResults(x_train, y_train):
+    def getRegressionResults(x_train, y_train, img_name, fig_number):
 
-        start_time = time.time()
-
-        print("Computing linear regression model for crime rate and mean property value")
+        start_time = time.time()        
 
         x_train = np.array(x_train)
         y_train = np.array(y_train)
@@ -40,16 +38,15 @@ class regression():
 
         
         elapsed_time = time.time() - start_time
-
-        print("Time elapsed: " + str(elapsed_time))
-        print("Finished computing linear regression")
+        
 
         #Generate a pdf file for regression plot
+        plt.figure(fig_number)
         plt.scatter(x_train, y_train,color='red')
         plt.plot(x_train ,regr.predict(x_train), color='blue',linewidth=3)
         plt.xticks(())
         plt.yticks(())
-        plt.savefig('crime_rate_value_regr.pdf')
+        plt.savefig(img_name + '.pdf')
         
         return results  
     

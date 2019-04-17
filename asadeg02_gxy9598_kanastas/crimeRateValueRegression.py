@@ -33,7 +33,7 @@ class crimeRateValueRegression(dml.Algorithm):
         
         #regr = regression.regression()
 
-        result = regr.getRegressionResults(crime_rates, mean_values)       
+        result = regr.getRegressionResults(crime_rates, mean_values, "crime-rate-value-regr", 20)       
         result['_id'] = 'crime_rate_mean_value_regression'
 
         
