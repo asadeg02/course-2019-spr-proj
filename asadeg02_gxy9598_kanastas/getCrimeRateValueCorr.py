@@ -58,11 +58,12 @@ class getCrimeRateValueCorr(dml.Algorithm):
         doc.add_namespace('log', 'http://datamechanics.io/log/') # The event log.
         doc.add_namespace('cob', 'https://data.cityofboston.gov/resource/')
         doc.add_namespace('bod', 'http://bostonopendata.boston.opendata.arcgis.com/datasets/')
+
         this_script = doc.agent('alg:asadeg02_gxy9598#Correlation', {prov.model.PROV_TYPE:prov.model.PROV['SoftwareAgent'], 'ont:Extension':'py'})
 
 
         resource_correlation = doc.entity('dat:asadeg02_gxy9598#crime_rate_mean_value', {prov.model.PROV_LABEL:'crime_rate_mean_value', prov.model.PROV_TYPE:'ont:DataSet'})
-        get_correlation = doc.activity('log:uuid'+str(uuid.uuid4()), startTime, endTime, {'prov:label':'Get crime value', prov.model.PROV_TYPE:'ont:Retrieval'})
+        get_correlation = doc.activity('log:uuid'+str(uuid.uuid4()), startTime, endTime, {'prov:label':'Get crime value', prov.model.PROV_TYPE:'ont:Computation'})
         doc.wasAssociatedWith(get_correlation, this_script)
         doc.usage(get_correlation, resource_correlation , startTime)
         correlation = doc.entity('dat:asadeg02_gxy9598#Correlations', {prov.model.PROV_LABEL:'Correlation report', prov.model.PROV_TYPE:'ont:DataSet'})
