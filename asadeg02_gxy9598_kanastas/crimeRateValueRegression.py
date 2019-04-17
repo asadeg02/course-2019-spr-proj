@@ -46,7 +46,8 @@ class crimeRateValueRegression(dml.Algorithm):
            
         repo['asadeg02_gxy9598.regressions'].metadata({'complete':True})
         print(repo['asadeg02_gxy9598.regressions'].metadata())
-        print('Load Regression Results For Modeling The Relationship Between Crime Rate And Mean Property Value')        
+        print('Load Regression Results For Modeling The Relationship Between Crime Rate And Mean Property Value') 
+        repo.logout()       
         endTime = datetime.datetime.now()
         return {"Start ":startTime, "End ":endTime}
 
@@ -54,10 +55,7 @@ class crimeRateValueRegression(dml.Algorithm):
 
     @staticmethod
     def provenance(doc = prov.model.ProvDocument(), startTime = None, endTime = None):
-        client = dml.pymongo.MongoClient()
-        repo = client.repo
-        repo.authenticate('asadeg02_gxy9598', 'asadeg02_gxy9598')
-
+        
         doc.add_namespace('alg', 'http://datamechanics.io/algorithm/') # The scripts are in <folder>#<filename> format.
         doc.add_namespace('dat', 'http://datamechanics.io/data/') # The data sets are in <user>#<collection> format.
         doc.add_namespace('ont', 'http://datamechanics.io/ontology#') # 'Extension', 'DataResource', 'DataSet', 'Retrieval', 'Query', or 'Computation'.
@@ -77,16 +75,4 @@ class crimeRateValueRegression(dml.Algorithm):
         doc.wasGeneratedBy(crime_rate_mean_value_regression, crime_rate_mean_value_regression, endTime)
         doc.wasDerivedFrom(crime_rate_mean_value_regression, resource_crime_rate_mean_value, crime_rate_mean_value_regression, crime_rate_mean_value_regression, crime_rate_mean_value_regression)
         
-        repo.logout()
         return doc
-
-
-
-
-
-
-crimeRateValueRegression.execute()
-doc = crimeRateValueRegression.provenance()
-#print(doc.get_provn())
-#print(json.dumps(json.loads(doc.serialize()), indent=4))
-## eof

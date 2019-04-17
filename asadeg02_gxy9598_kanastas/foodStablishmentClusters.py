@@ -93,10 +93,7 @@ class foodStablishmentClusters(dml.Algorithm):
 
     @staticmethod
     def provenance(doc = prov.model.ProvDocument(), startTime = None, endTime = None):
-        client = dml.pymongo.MongoClient()
-        repo = client.repo
-        repo.authenticate('asadeg02_gxy9598', 'asadeg02_gxy9598')
-
+        
         doc.add_namespace('alg', 'http://datamechanics.io/algorithm/') # The scripts are in <folder>#<filename> format.
         doc.add_namespace('dat', 'http://datamechanics.io/data/') # The data sets are in <user>#<collection> format.
         doc.add_namespace('ont', 'http://datamechanics.io/ontology#') # 'Extension', 'DataResource', 'DataSet', 'Retrieval', 'Query', or 'Computation'.
@@ -123,16 +120,4 @@ class foodStablishmentClusters(dml.Algorithm):
         doc.wasDerivedFrom(properties_within_most_compact_cluster, resource_food_stablishments, findFoodStablishmentClusters, findFoodStablishmentClusters, findFoodStablishmentClusters)
         doc.wasDerivedFrom(properties_within_most_compact_cluster, resource_buiding_permits, findFoodStablishmentClusters, findFoodStablishmentClusters, findFoodStablishmentClusters)
         
-        repo.logout()
         return doc
-
-
-
-
-
-
-foodStablishmentClusters.execute()
-doc = foodStablishmentClusters.provenance()
-#print(doc.get_provn())
-#print(json.dumps(json.loads(doc.serialize()), indent=4))
-## eof

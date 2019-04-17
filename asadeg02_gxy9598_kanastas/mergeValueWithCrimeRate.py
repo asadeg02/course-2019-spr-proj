@@ -74,9 +74,7 @@ class mergeValueWithCrimeRate(dml.Algorithm):
 
     @staticmethod
     def provenance(doc = prov.model.ProvDocument(), startTime = None, endTime = None):
-        client = dml.pymongo.MongoClient()
-        repo = client.repo
-        repo.authenticate('asadeg02_gxy9598', 'asadeg02_gxy9598')
+        
 
         doc.add_namespace('alg', 'http://datamechanics.io/algorithm/') # The scripts are in <folder>#<filename> format.
         doc.add_namespace('dat', 'http://datamechanics.io/data/') # The data sets are in <user>#<collection> format.
@@ -103,16 +101,5 @@ class mergeValueWithCrimeRate(dml.Algorithm):
         doc.wasDerivedFrom(property_value_for_dangerous_neighbourhoods, resource_crimes_incident, merge_value_with_crime_rate, merge_value_with_crime_rate, merge_value_with_crime_rate)
         doc.wasDerivedFrom(property_value_for_dangerous_neighbourhoods, resource_property_value, merge_value_with_crime_rate, merge_value_with_crime_rate, merge_value_with_crime_rate)
         
-        repo.logout()
+        
         return doc
-
-
-
-
-
-
-mergeValueWithCrimeRate.execute()
-doc = mergeValueWithCrimeRate.provenance()
-#print(doc.get_provn())
-#print(json.dumps(json.loads(doc.serialize()), indent=4))
-## eof

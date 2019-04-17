@@ -38,27 +38,7 @@ class getData(dml.Algorithm):
         repo["asadeg02_gxy9598.building_permits"].metadata({'complete':True})
         print(repo["asadeg02_gxy9598.building_permits"].metadata())
         print('Load Building Permits')
-
-        ##################################################################################
-
-        ''' data = repo["asadeg02_gxy9598.building_permits"].find()
-        address_list = [row['ADDRESS'] for row in data]
-        print(address_list)
-        results = getDataByScaping(address_list[:5])
-        repo.dropCollection("asadeg02_gxy9598.property_details")
-        repo.createCollection("asadeg02_gxy9598.property_details")
         
-        _id = 0
-        for r in results:
-            r['_id'] = _id
-            repo["asadeg02_gxy9598.property_details"].insert(r)
-            _id += 1
-        repo["asadeg02_gxy9598.property_details"].metadata({'complete':True})
-        print(repo["asadeg02_gxy9598.property_details"].metadata())
-        print('Finish scraping')
-
-        '''
-
        #################################----------------Get crime incident data --------------###############################################
        
         url = 'https://data.boston.gov/api/3/action/datastore_search?resource_id=12cb3883-56f5-47de-afa5-3b1cf61b257b&limit=366640'
@@ -151,9 +131,7 @@ class getData(dml.Algorithm):
 
     @staticmethod
     def provenance(doc = prov.model.ProvDocument(), startTime = None, endTime = None):
-        client = dml.pymongo.MongoClient()
-        repo = client.repo
-        repo.authenticate('asadeg02_gxy9598', 'asadeg02_gxy9598')
+        
 
         doc.add_namespace('alg', 'http://datamechanics.io/algorithm/') # The scripts are in <folder>#<filename> format.
         doc.add_namespace('dat', 'http://datamechanics.io/data/') # The data sets are in <user>#<collection> format.
@@ -214,16 +192,5 @@ class getData(dml.Algorithm):
         doc.wasGeneratedBy(Get_Zillow_Search, get_Get_Zillow_Search, endTime)
         doc.wasDerivedFrom(Get_Zillow_Search, resource_Get_Zillow_Search, get_Get_Zillow_Search,get_Get_Zillow_Search,get_Get_Zillow_Search)
 
-        repo.logout()
+        
         return doc
-
-
-
-
-
-
-getData.execute()
-doc = getData.provenance()
-#print(doc.get_provn())
-#print(json.dumps(json.loads(doc.serialize()), indent=4))
-## eof

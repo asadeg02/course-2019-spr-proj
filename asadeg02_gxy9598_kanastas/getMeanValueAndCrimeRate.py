@@ -95,10 +95,7 @@ class getMeanValueAndCrimeRate(dml.Algorithm):
       ###############################################################################################################################################
 
     @staticmethod
-    def provenance(doc = prov.model.ProvDocument(), startTime = None, endTime = None):
-        client = dml.pymongo.MongoClient()
-        repo = client.repo
-        repo.authenticate('asadeg02_gxy9598', 'asadeg02_gxy9598')
+    def provenance(doc = prov.model.ProvDocument(), startTime = None, endTime = None):        
 
         doc.add_namespace('alg', 'http://datamechanics.io/algorithm/') # The scripts are in <folder>#<filename> format.
         doc.add_namespace('dat', 'http://datamechanics.io/data/') # The data sets are in <user>#<collection> format.
@@ -125,10 +122,4 @@ class getMeanValueAndCrimeRate(dml.Algorithm):
         doc.wasDerivedFrom(crime_rate_mean_value, resource_Boston_street_segments, get_mean_value_and_crime_rate, get_mean_value_and_crime_rate, get_mean_value_and_crime_rate)
         doc.wasDerivedFrom(crime_rate_mean_value, resource_address_crime_rate, get_mean_value_and_crime_rate, get_mean_value_and_crime_rate, get_mean_value_and_crime_rate)
         
-        repo.logout()
         return doc
-
-
-getMeanValueAndCrimeRate.execute()
-doc = getMeanValueAndCrimeRate.provenance()
-

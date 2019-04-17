@@ -92,10 +92,7 @@ class mergeValueWithPermitAndCrime(dml.Algorithm):
       ###############################################################################################################################################
 
     @staticmethod
-    def provenance(doc = prov.model.ProvDocument(), startTime = None, endTime = None):
-        client = dml.pymongo.MongoClient()
-        repo = client.repo
-        repo.authenticate('asadeg02_gxy9598', 'asadeg02_gxy9598')
+    def provenance(doc = prov.model.ProvDocument(), startTime = None, endTime = None):        
 
         doc.add_namespace('alg', 'http://datamechanics.io/algorithm/') # The scripts are in <folder>#<filename> format.
         doc.add_namespace('dat', 'http://datamechanics.io/data/') # The data sets are in <user>#<collection> format.
@@ -125,16 +122,5 @@ class mergeValueWithPermitAndCrime(dml.Algorithm):
         doc.wasDerivedFrom(address_value_crime_rate_permit_number, resource_buiding_permits, mergeValueWithPermitAndCrime, mergeValueWithPermitAndCrime, mergeValueWithPermitAndCrime)
         doc.wasDerivedFrom(address_value_crime_rate_permit_number, resource_property_value_for_dangerous_neighbourhoods, mergeValueWithPermitAndCrime, mergeValueWithPermitAndCrime, mergeValueWithPermitAndCrime)
         
-        repo.logout()
+        
         return doc
-
-
-
-
-
-
-mergeValueWithPermitAndCrime.execute()
-doc = mergeValueWithPermitAndCrime.provenance()
-#print(doc.get_provn())
-#print(json.dumps(json.loads(doc.serialize()), indent=4))
-## eof
