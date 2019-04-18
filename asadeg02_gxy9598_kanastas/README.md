@@ -20,6 +20,15 @@ Active Food Establishments: https://data.boston.gov/api/3/action/datastore_searc
 
 Street Names: https://data.boston.gov/api/3/action/datastore_search?resource_id=a07cc1c6-aa78-4eb3-a005-dcf7a949249f&limit=18992
 
+**New data sets Added for project2 and spark project:**
+
+**Voter File**: Spark has been able to get a voter file from city hall which has the information about all the people in south Boston who voted. This data sat is really important for completing both spark project and proj#2 and proj#3 since it contains personal information of people including their age and occupation and phone number. (the purpose of spark project is to find the contact information of owner of buildings which are not on the market. we have cleaned up this data set and converted it into json format. now this data set is available at: http://datamechanics.io/data/asadeg02/Voter-File.json
+
+please note that the code for cleaning up is not included. it will be included in spark project GitHub repository.
+
+**Property Per Voter**: the addresses in voter file are the voters residency addresses but we are interested in finding first all the properties (Potentially in Boston) they own and then finding some information including value about those properties.
+we extracted all the first names and last names from voter file and we used last name + first name the search key to scrap assessors website: https://www.cityofboston.gov/assessing/search/ which gives us the exact addresses of all buildings/properties in Boston owned people and so merging this data set with voter file data set allows us to have access to both contact information of the owner and address of the their properties. again since scraping is really slow and it took a couple of hours to scrape the Assessors for all the voters in voter file we have done that separately. the code is not included in this repo but will on spark GitHub repository. this data set is now available at: http://datamechanics.io/data/asadeg02/Property-Per-Voter.json
+
 ---
 Aditional Resources
 ---
@@ -28,7 +37,7 @@ Zillow Search API: "https://www.zillow.com/howto/api/GetSearchResults.htm"
 
 We are using this API to create a database of the property addresses that are on the market which we are not using for project#1 but is required for the main South Boston Neighborhood Development project. 
 
-Accesssors (Accessing online - City Of Boston): https://www.cityofboston.gov/assessing/search/ 
+Assesssors (Assessing online - City Of Boston): https://www.cityofboston.gov/assessing/search/ 
 
 We are scraping this website to find the information we are interested in about the propeties in City Of Boston including the value of propeties. This resource is useful for both project#1 and Main project.
 
