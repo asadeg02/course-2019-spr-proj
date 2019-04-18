@@ -100,7 +100,7 @@ Another analysis that we wanted to do for project 2, as to find the correlation 
 | 19-95 | 0.1296640596971729    | 0.0415  |
 
 --------------------------------------------------------------------------------------------------------------
- **regression reuslts between age of owners and number of peroperties owned by them**
+ **Regression reuslts between age of owners and number of peroperties owned by them**
  
 | **Age Range** | **Coefficient**  | **mean_square_error** | **score** |
 | :---:          |     :---:      |        :---:           |  :---:              |
