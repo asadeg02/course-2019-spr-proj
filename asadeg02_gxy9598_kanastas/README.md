@@ -1,4 +1,4 @@
-# Project Description And Ideas 
+### Project1 and spark project Description 
 
 T1he Main project we are assigned is a spark project named "South Boston Neighborhood Development" the goal of which is to identify buildings that may not even be on the market yet and then finding contact information of the person/people who own it and permit number of the buildings. Since the initial project doesn't meet the requiemetns for project#1 we decided to define some interesting questions whithin the scope of our main project which could be potentially answered using the datasets given to us by spark. Answring these questions and analysing their answers could also provide a solution for the main project. 
 
@@ -34,30 +34,33 @@ We are scraping this website to find the information we are interested in about 
 
 **Please note that scraping a website or calling an API is such a slow process and scraping accessors for all the street addresses is beyond the time and resources available so we have put a limit on the number of addresses we want to scrape accessors for or call the api for**
 
-## Overview Of Transformations 
+----
+Overview Of Transformations 
+----
 
 "aggregateCrimesIncident", "mergeValueWithCrimeRate" and "mergeValueWithPermitAndCrime" are 3 transfomations done to provide an answer for the first question by first aggregating crime incident data set using the "street" attribute as keys and then sorting the result in ascending order then finding the value and ParcelID for the result by scraping `Accsesssors` (we can look at this part of tranfomation as a merge but one of the data sets is in the cloud and not stored in the data base due to time constraints explained) and finally merging the result with crime indincet and permit databases and projecting the desired attributes. Please note that our notion of "the most dangerous" here is the street addresses with the most records in "crime incident report" database.
 
 "foodStablishmentClusters" provides an answer for the second question asked by fisrt clustering food stablishments by ther locations, then counting the number of food stablishments in each cluster, then finding the closest food stablishment center for each building in permit data base) and finally storing the infomation about propeties in the most compact cluster (with the most food stablishments) into a databse.
 
----
-Project 2
----
+-------------------------------------------------------------------------------------------------------------------------
 
-**Project 2 Narrative**:
+## Project 2
 
-Optimization Problem:
+
+### Project 2 Narrative:
+
+**Optimization Problem**:
 
 For project 2 we are interested finding a linear regression model between crime rate of streets and the average value of of the properties in that street. since the logic behind finding a best fit linear model is to maximize a maximum likelihood estimator which means minimizing a sum of square errors function, this counts as an optimization problem. we are have also found the regression model between age of the owner and number of the properties the own and we have done this for multiple sub sets of data and for different range ages. Please see next sections short report of results. Using these results we can come up with interesting interactive visulization for project 3.
 
-Statistical Analysis:
+**Statistical Analysis**:
 
 we have found the correlation coefficient and their p-values between crime rate and Average value of properties per street.
 Also we have done correlation analysis between age of owners and the number of properties the own in Boston for different age ranges. Please see next sections short report of results.
 
 ---------------------------------------------------------------------------------------------------------------------------
 
-**New data sets Added for project2 and spark project:**
+### New data sets Added for project2 and spark project:
 
 **Voter File**: Spark has been able to get the voter file from city hall which contains information about all the people in south Boston who voted. This data set is really important for completing both spark project and proj#2 and proj#3 since it contains personal information of people including their age and occupation and phone number. (the purpose of spark project is to find the contact information of owner of buildings which are not on the market. we have cleaned up this data set and converted it into json format. now this data set is available at: http://datamechanics.io/data/asadeg02/Voter-File.json
 
@@ -68,7 +71,7 @@ we extracted all the first names and last names from voter file and we used last
 
 -----------------------------------------------------------------------------------------------------------------
 
-**New transformations added for project2**:
+### New transformations added for project2:
 
 One of the things that we were interested in for project 2 is to find the correlations between the safety of a street and the value of the properties in that street and see if there is a good linear model for modeling the relationship between these two. for that we have added a new transformation algorithm which operated on top "address_crime_rate" data set derived in project 1 and Boston streets data sets also derived in project 2. 
 we have divided the Boston streets into two categories: safe street and dangerous street. safe streets are the ones which don't have any record in "address_crime_rate" data set and dangerous streets which appear in address_crime_rate" data set. obviously crime rate for safe streets is zero. for modeling the regression and correlation we only sample a few streets from safe streets since the number of street with crime rate value equal to one is a lot more than dangerous streets. In order to get good regression results we have constrained the number of safe street we include in our analysis.  
@@ -78,9 +81,12 @@ Another analysis that we wanted to do for project 2, as to find the correlation 
 
 ---------------------------------------------------------------------------------------------------------------------------
 
-**Results** 
+## Results
 
-| Age Range | Correlation coefficient  | P-Value |
+
+ **Correlation reuslts between age of owners and number of peroperties owned by them**
+ 
+| **Age Range** | **Correlation coefficient**  | **P-Value** |
 | :---         |     :---:      |          ---: |
 | 19-35 | 0.08669242032631995   | 0.464   |
 | 25-45 | 0.0633716882769931    | 0.4545  |
@@ -93,7 +99,15 @@ Another analysis that we wanted to do for project 2, as to find the correlation 
 | 30-95 | 0.10281159124264036   | 0.1225  |
 | 19-95 | 0.1296640596971729    | 0.0415  |
 
-## Running The Code
+**Regression results between crime rate and average property value per street(with a small number of safe streets included whose crime rate is zero)**
+
+![rsz_1crime-rate-regr](https://user-images.githubusercontent.com/32320836/56332285-ae8f7200-615d-11e9-8d7f-119d1af70fe6.png)
+
+Regression results for age and number of properties owned for different age ranges are note included here! but after running the code they will be stored in root directly automatically!
+
+---
+Running The Code
+---
 
 In Order to be able to run the code you need to install `selenium` and `xmltodict`. We are using selenium for scraping Accsesssors and using xmltodic for parsing the Zillow Search API responses since they are in xml foramt.
 
