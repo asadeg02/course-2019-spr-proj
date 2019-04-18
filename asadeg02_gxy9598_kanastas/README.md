@@ -32,13 +32,13 @@ Assesssors (Assessing online - City Of Boston): https://www.cityofboston.gov/ass
 
 We are scraping this website to find the information we are interested in about the propeties in City Of Boston including the value of propeties. This resource is useful for both project#1 and Main project.
 
-**Please note that scraping a website or calling an API is such a slow process and scraping accessors for all the street addresses is beyond the time and resources available so we have put a limit on the number of addresses we want to scrape accessors for or call the api for**
+**Please note that scraping a website or calling an API is such a slow process and scraping assessors for all the street addresses is beyond the time and resources available so we have put a limit on the number of addresses we want to scrape assessors for or call the api for**
 
 ----
 Overview Of Transformations 
 ----
 
-"aggregateCrimesIncident", "mergeValueWithCrimeRate" and "mergeValueWithPermitAndCrime" are 3 transfomations done to provide an answer for the first question by first aggregating crime incident data set using the "street" attribute as keys and then sorting the result in ascending order then finding the value and ParcelID for the result by scraping `Accsesssors` (we can look at this part of tranfomation as a merge but one of the data sets is in the cloud and not stored in the data base due to time constraints explained) and finally merging the result with crime indincet and permit databases and projecting the desired attributes. Please note that our notion of "the most dangerous" here is the street addresses with the most records in "crime incident report" database.
+"aggregateCrimesIncident", "mergeValueWithCrimeRate" and "mergeValueWithPermitAndCrime" are 3 transfomations done to provide an answer for the first question by first aggregating crime incident data set using the "street" attribute as keys and then sorting the result in ascending order then finding the value and ParcelID for the result by scraping `Assesssors` (we can look at this part of tranfomation as a merge but one of the data sets is in the cloud and not stored in the data base due to time constraints explained) and finally merging the result with crime indincet and permit databases and projecting the desired attributes. Please note that our notion of "the most dangerous" here is the street addresses with the most records in "crime incident report" database.
 
 "foodStablishmentClusters" provides an answer for the second question asked by fisrt clustering food stablishments by ther locations, then counting the number of food stablishments in each cluster, then finding the closest food stablishment center for each building in permit data base) and finally storing the infomation about propeties in the most compact cluster (with the most food stablishments) into a databse.
 
@@ -51,7 +51,7 @@ Overview Of Transformations
 
 **Optimization Problem**:
 
-For project 2 we are interested finding a linear regression model between crime rate of streets and the average value of of the properties in that street. since the logic behind finding a best fit linear model is to maximize a maximum likelihood estimator which means minimizing a sum of square errors function, this counts as an optimization problem. we are have also found the regression model between age of the owner and number of the properties the own and we have done this for multiple sub sets of data and for different range ages. Please see next sections short report of results. Using these results we can come up with interesting interactive visulization for project 3.
+For project 2 we are interested in finding a linear regression model between crime rate of streets and the average value of of the properties in that street. since the logic behind finding a best fit linear model is to maximize a maximum likelihood estimator which means minimizing a sum of square errors function, this counts as an optimization problem. we are have also found the regression model between age of the owner and number of the properties the own and we have done this for multiple sub sets of data and for different range ages. Please see next sections short report of results. Using these results we can come up with interesting interactive visulization for project 3.
 
 **Statistical Analysis**:
 
