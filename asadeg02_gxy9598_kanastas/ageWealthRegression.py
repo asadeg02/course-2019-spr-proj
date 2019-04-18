@@ -84,11 +84,8 @@ class ageWealthRegression(dml.Algorithm):
 
         for key in regr_dict:
             regr_dict[key]['_id'] = key
-            repo['asadeg02_gxy9598.age_wealth_regr'].insert_one(regr_dict[key])       
-                
-        res = repo.asadeg02_gxy9598.age_wealth_regr.find()
-        for doc in res:
-            print(doc)
+            repo['asadeg02_gxy9598.age_wealth_regr'].insert_one(regr_dict[key])               
+        
 
         repo['asadeg02_gxy9598.age_wealth_regr'].metadata({'complete':True})
         print(repo['asadeg02_gxy9598.age_wealth_regr'].metadata())
