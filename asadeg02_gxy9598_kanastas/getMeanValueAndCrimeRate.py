@@ -49,15 +49,13 @@ class getMeanValueAndCrimeRate(dml.Algorithm):
             if street not in dangerous_streets:
                 safe_streets.append(street)
 
-        '''num_streets = min(len(safe_streets),len(safe_streets))
-
-        if trial == True:
-            num_streets = 10
-        '''
-        crime_rate_mean_value = []
-        #scrapper = scrapeAssessors()       
         
-        for street in dangerous_streets[:5]:
+        crime_rate_mean_value = []
+        
+        if trial == True:
+            dangerous_streets = dangerous_streets[:2]   
+        
+        for street in dangerous_streets:
             street_value_crime_rate = {'street': street, 'crime_rate': street_crime_rate_dict[street]}            
             results = scrapper.scrapeAssessors([street])            
             if len(results) > 0:

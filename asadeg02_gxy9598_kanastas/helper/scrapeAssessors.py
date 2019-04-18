@@ -16,6 +16,7 @@ class scrapeAssessors():
     @staticmethod
     def scrapeAssessors(address_list):
 
+
         start_time = time.time()
         print("Scraping Boston gov for details of properties")
         #driver = webdriver.Chrome("/usr/bin/chromedriver")
@@ -35,7 +36,8 @@ class scrapeAssessors():
             submit.click()
             
             if len(driver.find_elements_by_tag_name("table")) >= 4:
-                table = driver.find_elements_by_tag_name("table")[3]
+                table = driver.find_elements_by_tag_name("table")[3]               
+
                 rows = table.find_elements_by_tag_name("tr")
 
                 for row in rows:
