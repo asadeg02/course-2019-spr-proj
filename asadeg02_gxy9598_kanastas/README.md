@@ -20,15 +20,6 @@ Active Food Establishments: https://data.boston.gov/api/3/action/datastore_searc
 
 Street Names: https://data.boston.gov/api/3/action/datastore_search?resource_id=a07cc1c6-aa78-4eb3-a005-dcf7a949249f&limit=18992
 
-**New data sets Added for project2 and spark project:**
-
-**Voter File**: Spark has been able to get the voter file from city hall which contains information about all the people in south Boston who voted. This data set is really important for completing both spark project and proj#2 and proj#3 since it contains personal information of people including their age and occupation and phone number. (the purpose of spark project is to find the contact information of owner of buildings which are not on the market. we have cleaned up this data set and converted it into json format. now this data set is available at: http://datamechanics.io/data/asadeg02/Voter-File.json
-
-please note that the code for cleaning up is not included. it will be included in spark project GitHub repository.
-
-**Property Per Voter**: the addresses in voter file are the voters residency addresses but we are interested in finding first all the properties (Potentially in Boston) they own and then finding some information including value about those properties.
-we extracted all the first names and last names from voter file and we used last name + first name the search key to scrap assessors website: https://www.cityofboston.gov/assessing/search which gives us the exact addresses of all buildings/properties in Boston owned people and so merging this data set with voter file data set allows us to have access to both contact information of the owner and address of the their properties. again since scraping is really slow and it took a couple of hours to scrape the Assessors for all the voters in voter file we have done that separately. the code is not included in this repo but will on spark GitHub repository. this data set is now available at: http://datamechanics.io/data/asadeg02/Property-Per-Voter.json
-
 ---
 Aditional Resources
 ---
@@ -49,6 +40,34 @@ We are scraping this website to find the information we are interested in about 
 
 "foodStablishmentClusters" provides an answer for the second question asked by fisrt clustering food stablishments by ther locations, then counting the number of food stablishments in each cluster, then finding the closest food stablishment center for each building in permit data base) and finally storing the infomation about propeties in the most compact cluster (with the most food stablishments) into a databse.
 
+---
+Project 2
+---
+
+**Project 2 Narrative**:
+
+Optimization Problem:
+
+For project 2 we are interested finding a linear regression model between crime rate of streets and the average value of of the properties in that street. since the logic behind finding a best fit linear model is to maximize a maximum likelihood estimator which means minimizing a sum of square errors function, this counts as an optimization problem. we are have also found the regression model between age of the owner and number of the properties the own and we have done this for multiple sub sets of data and for different range ages. Please see next sections short report of results. Using these results we can come up with interesting interactive visulization for project 3.
+
+Statistical Analysis:
+
+we have found the correlation coefficient and their p-values between crime rate and Average value of properties per street.
+Also we have done correlation analysis between age of owners and the number of properties the own in Boston for different age ranges. Please see next sections short report of results.
+
+---------------------------------------------------------------------------------------------------------------------------
+
+**New data sets Added for project2 and spark project:**
+
+**Voter File**: Spark has been able to get the voter file from city hall which contains information about all the people in south Boston who voted. This data set is really important for completing both spark project and proj#2 and proj#3 since it contains personal information of people including their age and occupation and phone number. (the purpose of spark project is to find the contact information of owner of buildings which are not on the market. we have cleaned up this data set and converted it into json format. now this data set is available at: http://datamechanics.io/data/asadeg02/Voter-File.json
+
+please note that the code for cleaning up is not included. it will be included in spark project GitHub repository.
+
+**Property Per Voter**: the addresses in voter file are the voters residency addresses but we are interested in finding first all the properties (Potentially in Boston) they own and then finding some information including value about those properties.
+we extracted all the first names and last names from voter file and we used last name + first name the search key to scrap assessors website: https://www.cityofboston.gov/assessing/search which gives us the exact addresses of all buildings/properties in Boston owned people and so merging this data set with voter file data set allows us to have access to both contact information of the owner and address of the their properties. again since scraping is really slow and it took a couple of hours to scrape the Assessors for all the voters in voter file we have done that separately. the code is not included in this repo but will on spark GitHub repository. this data set is now available at: http://datamechanics.io/data/asadeg02/Property-Per-Voter.json
+
+-----------------------------------------------------------------------------------------------------------------
+
 **New transformations added for project2**:
 
 One of the things that we were interested in for project 2 is to find the correlations between the safety of a street and the value of the properties in that street and see if there is a good linear model for modeling the relationship between these two. for that we have added a new transformation algorithm which operated on top "address_crime_rate" data set derived in project 1 and Boston streets data sets also derived in project 2. 
@@ -57,6 +76,22 @@ In order to computer the average property value in a street, we have scrapped as
 
 Another analysis that we wanted to do for project 2, as to find the correlation between age of a person an the number of properties that person owns. for that, we have merged "voters_info" repo and  "properties_per_voter" repo to be able to get a data set whose documents include "age", "numProperties", "phone", "occupation" "addr" attribute. please note that this address is the address of the buildings they own and not (the address where the live included in voter file) that's why we we had to merge these two data sets to be able to access personal information of owners. the merge has been done on both first name and last name. and finally since we aggregate the results in "age_numProperties_phone_ocupation_addr" by owner's complete names to count the number of properties each person owns and get their age and store the results in "owner_num_properties_age". the documents in this repo have the format doc = {'id': "completename", value:{num_properties: number, age:age}}.
 
+---------------------------------------------------------------------------------------------------------------------------
+
+**Results** 
+
+| Age Range | Correlation coefficient  | P-Value |
+| :---         |     :---:      |          ---: |
+| 19-35 | 0.08669242032631995   | 0.464   |
+| 25-45 | 0.0633716882769931    | 0.4545  |
+| 20-45 | 0.0628646535726424    | 0.453   |
+| 35-65 | 0.08957347833195095   | 0.2965  |
+| 40-70 | 0.07076712290817734   | 0.453   |
+| 30-60 | 0.10996008434546152   | 0.1635  |
+| 40-95 | 0.06203316105818047   | 0.4585  |
+| 50-95 | -0.03671870899042569  | 0.7155  |
+| 30-95 | 0.10281159124264036   | 0.1225  |
+| 19-95 | 0.1296640596971729    | 0.0415  |
 
 ## Running The Code
 
