@@ -119,7 +119,7 @@ Another analysis that we wanted to do for project 2, as to find the correlation 
 
 ![rsz_1crime-rate-regr](https://user-images.githubusercontent.com/32320836/56332285-ae8f7200-615d-11e9-8d7f-119d1af70fe6.png)
 
-Regression results for age and number of properties owned for different age ranges are note included here! but after running the code they will be stored in root directly automatically!
+Regression results for age and number of properties owned for different age ranges are note included here. but after running the code they will be stored in root directory automatically.
 
 -------------------------------------------------------------------------------------------------------------------------
 
