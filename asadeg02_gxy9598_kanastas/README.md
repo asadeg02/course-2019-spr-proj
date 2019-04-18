@@ -49,6 +49,14 @@ We are scraping this website to find the information we are interested in about 
 
 "foodStablishmentClusters" provides an answer for the second question asked by fisrt clustering food stablishments by ther locations, then counting the number of food stablishments in each cluster, then finding the closest food stablishment center for each building in permit data base) and finally storing the infomation about propeties in the most compact cluster (with the most food stablishments) into a databse.
 
+**New transformations added for project2**:
+
+One of the things that we were interested in for project 2 is to find the correlations between the safety of a street and the value of the properties in that street and see if there is a good linear model for modeling the relationship between these two. for that we have added a new transformation algorithm which operated on top "address_crime_rate" data set derived in project 1 and Boston streets data sets also derived in project 2. 
+we have divided the Boston streets into two categories: safe street and dangerous street. safe streets are the ones which don't have any record in "address_crime_rate" data set and dangerous streets which appear in address_crime_rate" data set. obviously crime rate for safe streets is zero. for modeling the regression and correlation we only sample a few streets from safe streets since the number of street with crime rate value equal to one is a lot more than dangerous streets. In order to get good regression results we have constrained the number of safe street we include in our analysis.  
+In order to computer the average property value in a street, we have scrapped assessors and stored the result data set in "crime_rate_mean_value" repo. the ids in this data set are the street names and value is the average property value in that street. 
+
+Another analysis that we wanted to do for project 2, as to find the correlation between age of a person an the number of properties that person owns. for that, we have merged "voters_info" repo and  "properties_per_voter" repo to be able to get a data set whose documents include "age", "numProperties", "phone", "occupation" "addr" attribute. please note that this address is the address of the buildings they own and not (the address where the live included in voter file) that's why we we had to merge these two data sets to be able to access personal information of owners. the merge has been done on both first name and last name. and finally since we aggregate the results in "age_numProperties_phone_ocupation_addr" by owner's complete names to count the number of properties each person owns and get their age and store the results in "owner_num_properties_age". the documents in this repo have the format doc = {'id': "completename", value:{num_properties: number, age:age}}.
+
 
 ## Running The Code
 
