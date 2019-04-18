@@ -121,6 +121,12 @@ Another analysis that we wanted to do for project 2, as to find the correlation 
 
 Regression results for age and number of properties owned for different age ranges are note included here! but after running the code they will be stored in root directly automatically!
 
+-------------------------------------------------------------------------------------------------------------------------
+
+**Note about trial mode**: 
+
+I have already imposed really hard limits on the length of subsets of data we're working with but since we are scraping a web site it's still takes a little bit over 2 minutes. generally this not a problem since for spark project every thing is stored in a file like "Property Per Voter" and we read from that. The reason why we aren’t using them here is because we wanted to use different techniques of data retrieval including scraping for class project.
+
 ---
 Running The Code
 ---
