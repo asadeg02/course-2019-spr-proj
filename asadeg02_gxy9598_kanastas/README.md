@@ -134,3 +134,10 @@ Running The Code
 In Order to be able to run the code you need to install `selenium` and `xmltodict`. We are using selenium for scraping Accsesssors and using xmltodic for parsing the Zillow Search API responses since they are in xml foramt.
 
 For scraping Accsesssors in scrapeBostonGov method in "mergeValueWithCrimeRate.py" module, you need to specify the path to your chrome web driver. The path already used, is the default path when you install chrome web driver. 
+
+-----------------------------------------------------------------------------------------------------------------
+## Project 3
+For project 3 we have implemented a web app which runs the statistical analysis for correlation between age and number of properties owned. this web app is impelemnted using flask.(app.zip)
+We have also implemented an interactive map for all the properties not on the market in south Bsoton.
+this map has been created using folium and we have embedded the html file witihn our java script app which is to be delivered to spark.(nteractivemapapp.zip) 
+Below is the picture of our interactive map
