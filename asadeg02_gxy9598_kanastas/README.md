@@ -140,7 +140,9 @@ For scraping Accsesssors in scrapeBostonGov method in "mergeValueWithCrimeRate.p
 For project 3 we have implemented a web app which runs the statistical analysis for correlation between age and number of properties owned. this web app is impelemnted using flask.(app.zip)
 We have also implemented an interactive map for all the properties not on the market in south Bsoton.
 this map has been created using folium and we have embedded the html file witihn our java script app which is to be delivered to spark.(nteractivemapapp.zip) 
+
 Below is the picture of our interactive map
+
 ![map3](https://user-images.githubusercontent.com/32320836/57174243-e9ee9980-6e09-11e9-8959-7fd979acb32e.png)
 
 Red makerker are the porperties that we have their owners's contact information and greens onew are the ones that we don't have thier owners' contact info.
